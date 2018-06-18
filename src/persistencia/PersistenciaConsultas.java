@@ -112,7 +112,7 @@ public class PersistenciaConsultas {
 					+ fecha_Entrada + "' AND '" + fecha_Salida + "' OR FECHA_SALIDA BETWEEN '" 
 					+ fecha_Entrada + "' AND '" + fecha_Salida + "' OR (FECHA_ENTRADA < '" 
 					+ fecha_Entrada + "' AND FECHA_SALIDA >= '" + fecha_Salida +"')) AND RESERVA.CLIENTE = CLIENTE.ID_CLI";
-			System.out.println(query);
+
 			rs = st.executeQuery(query);
 				
 			while (rs.next()) {

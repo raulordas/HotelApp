@@ -212,11 +212,17 @@ public class ControladorHotel implements ActionListener, MouseListener {
 			} else if (event.equals(panelReserva.getBtnReserva())) {	
 				int res = 0;
 				
-				if (panelReserva.getIdCliente() == 0 && panelReserva.datosCliente() != null) {
-					res = pReservas.insertarReserva(panelReserva.getDatos(habitacion, consultaAux, calcuPrecios.getPrecio_Final()));
-					pUsuarios.insertarCliente(panelReserva.datosCliente());
-				} else {
-					res = pReservas.insertarReserva(panelReserva.getDatos(habitacion, consultaAux, calcuPrecios.getPrecio_Final()));
+				if (panelReserva.datosCliente() != null) {
+					
+					//Si es cliente anónimo inserta el cliente y la reserva
+					if (panelReserva.getIdCliente() == 0) {
+						res = pReservas.insertarReservaAnonima(panelReserva.getDatos(habitacion, consultaAux, calcuPrecios.getPrecio_Final()), panelReserva.datosCliente());
+						panelReserva.reciclar();
+						
+					//Si es cliente registrado inserta la reserva asociada a dicho cliente
+					} else {
+						res = pReservas.insertarReserva(panelReserva.getDatos(habitacion, consultaAux, calcuPrecios.getPrecio_Final()));
+					}
 				}
 				
 				if (res == 1) {
@@ -297,5 +303,4 @@ public class ControladorHotel implements ActionListener, MouseListener {
 		// TODO Auto-generated method stub
 		
 	}
-
 }

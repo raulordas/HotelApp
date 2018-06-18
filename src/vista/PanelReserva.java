@@ -189,6 +189,14 @@ public class PanelReserva extends JPanel implements IHotel {
 		txtDireccion.setEditable(false);
 	}
 	
+	public void reciclar() {
+		txtNombre.setText("");
+		txtApellido.setText("");
+		txtCodigoPostal.setText("");
+		txtDireccion.setText("");
+		txtEmail.setText("");
+	}
+	
 	public Cliente datosCliente() {
 		int codigo_postal = 0;
 		if (!(txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtEmail.getText().equals("") || txtDireccion.getText().equals("") || txtCodigoPostal.getText().equals(""))) {
